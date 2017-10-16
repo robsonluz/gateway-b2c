@@ -20,8 +20,7 @@ public class PedidoController {
 	
 	@RequestMapping(path="", method=RequestMethod.GET)
 	public HttpEntity<?> find() {
-		return restTemplate.getForEntity("http://service-pedido:8080/pedidos", Map.class);
-		//return new ResponseEntity<>(, HttpStatus.OK);
+		return restTemplate.getForEntity("http://service-pedido:8080/pedidos", Object.class);
 	}
 	
 	@RequestMapping(path="", method=RequestMethod.POST)
@@ -30,6 +29,6 @@ public class PedidoController {
 		headers.setContentType(MediaType.APPLICATION_JSON);
 
 		HttpEntity<Map<String, Object>> request = new HttpEntity<>(produto, headers);
-		return restTemplate.postForEntity("http://service-pedido:8080/pedidos", request, Map.class);
+		return restTemplate.postForEntity("http://service-pedido:8080/pedidos", request, Object.class);
 	}
 }

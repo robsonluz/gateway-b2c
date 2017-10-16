@@ -20,8 +20,7 @@ public class ProdutoController {
 	
 	@RequestMapping(path="", method=RequestMethod.GET)
 	public HttpEntity<?> find() {
-		return restTemplate.getForEntity("http://service-produto:8080/produtos", Map.class);
-		//return new ResponseEntity<>(, HttpStatus.OK);
+		return restTemplate.getForEntity("http://service-produto:8080/produtos", Object.class);
 	}
 	
 	@RequestMapping(path="", method=RequestMethod.POST)
@@ -30,6 +29,6 @@ public class ProdutoController {
 		headers.setContentType(MediaType.APPLICATION_JSON);
 
 		HttpEntity<Map<String, Object>> request = new HttpEntity<>(produto, headers);
-		return restTemplate.postForEntity("http://service-produto:8080/produtos", request, Map.class);
+		return restTemplate.postForEntity("http://service-produto:8080/produtos", request, Object.class);
 	}
 }
